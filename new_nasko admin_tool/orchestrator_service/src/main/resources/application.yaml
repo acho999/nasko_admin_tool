@@ -1,0 +1,50 @@
+spring:
+  profiles:
+    active: default
+  devtools:
+    enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/naskoDB
+    username: root
+    #password: acho999
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: MySQL8Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+        cookie: refresh-cookie
+api:
+  users:
+    login:
+      url:
+        path: /users/login
+    register:
+      url:
+        path: /users/register
+    userDetails:
+      url:
+        path: /users/getUserDetails**
+  roles:
+    create:
+      url:
+        path: /roles/create
+    getAll:
+      url:
+        path: /roles/getAll
+  path: /Users/v-angel.zahariev/Desktop/

@@ -8,12 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="orchestrator_service (1)" />
+        <module name="orchestrator_service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="admin_tool" target="11" />
       <module name="nasko_admin_tool" target="11" />
-      <module name="orchestrator_service" target="11" />
       <module name="swagger_config" target="11" />
     </bytecodeTargetLevel>
   </component>

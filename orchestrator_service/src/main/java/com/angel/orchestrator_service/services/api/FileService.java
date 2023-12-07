@@ -6,6 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public interface FileService {
-    void saveDataFromFile(MultipartFile file) throws IOException;
+    String saveDataFromFile(MultipartFile file) throws IOException;
     void saveFile(MultipartFile file);
 }

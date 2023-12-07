@@ -34,7 +34,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public void saveDataFromFile(MultipartFile file) throws IOException {
+    public String saveDataFromFile(MultipartFile file) throws IOException {
         AtomicInteger counter = new AtomicInteger(0);
         String content = new String(file.getBytes(), StandardCharsets.UTF_8);
         String[] array = content.replaceAll("\"", "").split("\\r\\n");
@@ -55,8 +55,18 @@ public class FileServiceImpl implements FileService {
                 .hostTotalEarnings(BigDecimal.valueOf(Double.parseDouble(x[4])))
                 .build())
             .collect(Collectors.toList());
+        List<ReportRow> rows = this.repository.findAll();
+        boolean isDataExists = rows.stream().map(ReportRow::getDate).collect(Collectors.toList())
+                .contains(reportRows.get(0).getDate());
+        String result;
+        if (isDataExists) {
+            result = "The data exists!";
+            return result;
+        }
+        result = "Data Saved!";
         this.saveFile(file);
         this.repository.saveAllAndFlush(reportRows);
+        return result;
     }
 
     @Override

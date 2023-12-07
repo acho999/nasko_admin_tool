@@ -26,7 +26,7 @@ public class FilesController {
     @PostMapping(value = "/upload", produces = MediaType.APPLICATION_JSON_VALUE, consumes = "multipart/form-data")
     public ResponseEntity<String> uploadFile(@RequestPart(value = "file") MultipartFile file)
         throws IOException {
-        this.fileService.saveDataFromFile(file);
-        return ResponseEntity.ok("ok");
+        String result = this.fileService.saveDataFromFile(file);
+        return ResponseEntity.ok(result);
     }
 }

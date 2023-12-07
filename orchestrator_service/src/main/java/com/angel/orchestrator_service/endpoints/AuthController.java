@@ -4,6 +4,7 @@ import com.angel.orchestrator_service.DTO.UserDto;
 import com.angel.orchestrator_service.pojo.Credentials;
 import com.angel.orchestrator_service.services.impl.AuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,7 @@ public class AuthController {
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @CrossOrigin(origins = "*",exposedHeaders = "Authorization" ,allowedHeaders = {"Authorization", "Cache-Control", "Content-Type","Access-Control-Allow-Origin"})
     public ResponseEntity<String> login(@RequestBody Credentials credentials, HttpServletRequest request, HttpServletResponse response){
         this.service.login(credentials,request,response);
         return new ResponseEntity<>(HttpStatus.OK);
